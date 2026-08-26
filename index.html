@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل وموسوعة المقابلات لمطور الـ Frontend | Mohamed Khamis</title>
+  <meta name="description" content="بنك أسئلة وخريطة طريق شاملة لمقابلات عمل مطور الـ Frontend (React, Next.js, TypeScript, JavaScript, CSS, System Design, Behavioral)">
+  
+  <!-- Google Fonts: Cairo for Arabic & Outfit for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow Effects -->
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="brand">
+        <div class="brand-badge">
+          <i class="fa-solid fa-code"></i> Frontend Interview Blueprint
+        </div>
+        <h1 class="main-title">دليل وموسوعة المقابلات الشخصية <span class="gradient-text">لـ محمد خميس</span></h1>
+        <p class="subtitle">الترسانة الشاملة للأسئلة التقنية، المعمارية، ونماذج الكود والإجابات باللغتين العربية والإنجليزية.</p>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="تبديل الوضع الليلي/النهاري">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="flashcardModeBtn" class="btn-secondary" title="وضع البطاقات التعليمية">
+          <i class="fa-solid fa-layer-group"></i> وضع المذاكرة (Flashcards)
+        </button>
+        <button id="printBtn" class="btn-primary" title="طباعة أو حفظ كـ PDF">
+          <i class="fa-solid fa-print"></i> طباعة / حفظ PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats & Progress Bar -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-card">
+        <div class="stat-item">
+          <span class="stat-number" id="totalQuestionsCount">38</span>
+          <span class="stat-label">إجمالي الأسئلة</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="masteredCount">0</span>
+          <span class="stat-label">أسئلة تم إتقانها ✅</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="codeSnippetsCount">6</span>
+          <span class="stat-label">أمثلة كود عملية 💻</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>نسبة الاستعداد للإنترفيو:</span>
+            <span id="progressPercentage">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls: Search & Category Filters -->
+  <section class="controls-section">
+    <div class="container">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="ابحث في الأسئلة، الإجابات، أو الكلمات المفتاحية (بالعربي أو الإنجليزي)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-btn" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Categories Pills -->
+      <div class="categories-wrapper">
+        <div class="categories-scroll" id="categoryFilters">
+          <button class="cat-pill active" data-cat="all">
+            <i class="fa-solid fa-border-all"></i> الكل (<span id="count-all">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="hr">
+            <i class="fa-solid fa-user-tie"></i> أسئلة التعارف و HR (<span id="count-hr">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="core-react-next">
+            <i class="fa-brands fa-react"></i> React & Next.js (<span id="count-core-react-next">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="js-ts">
+            <i class="fa-brands fa-js"></i> JavaScript & TypeScript (<span id="count-js-ts">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="state-data">
+            <i class="fa-solid fa-database"></i> State & Data Fetching (<span id="count-state-data">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="arch-perf">
+            <i class="fa-solid fa-bolt"></i> الأداء والهندسة المعمارية (<span id="count-arch-perf">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="security-best">
+            <i class="fa-solid fa-shield-halved"></i> الأمان و Git و Best Practices (<span id="count-security-best">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="behavioral">
+            <i class="fa-solid fa-comments"></i> الأسئلة السلوكية Soft Skills (<span id="count-behavioral">0</span>)
+          </button>
+          <button class="cat-pill" data-cat="code">
+            <i class="fa-solid fa-laptop-code"></i> أكواد حية Live Coding (<span id="count-code">0</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Questions Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Active Filter Bar & Quick Actions -->
+      <div class="content-toolbar">
+        <div class="active-count" id="activeResultsInfo">عرض 38 سؤال</div>
+        <div class="quick-view-actions">
+          <button id="expandAllBtn" class="btn-subtle"><i class="fa-solid fa-angles-down"></i> فتح الكل</button>
+          <button id="collapseAllBtn" class="btn-subtle"><i class="fa-solid fa-angles-up"></i> إغلاق الكل</button>
+          <button id="onlyUnmasteredBtn" class="btn-subtle"><i class="fa-solid fa-filter"></i> المتبقي فقط</button>
+        </div>
+      </div>
+
+      <!-- Questions List Container -->
+      <div class="questions-grid" id="questionsContainer">
+        <!-- Rendered by JavaScript dynamically -->
+      </div>
+
+      <!-- No Results State -->
+      <div id="noResults" class="empty-state" style="display: none;">
+        <i class="fa-solid fa-triangle-exclamation empty-icon"></i>
+        <h3>لم نجد أي أسئلة مطابقة لبحثك!</h3>
+        <p>جرب البحث بكلمات أخرى أو اختر فئة مختلفة من الأعلى.</p>
+        <button id="resetSearchBtn" class="btn-primary">إعادة تعيين البحث</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span id="toastMsg">تم النسخ بنجاح!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <p>صُممت خصيصاً لمراجعة وإتقان مقابلات الـ Frontend 🚀 - بالتوفيق يا محمد يا بطل وإن شاء الله Accepted!</p>
+      <div class="footer-links">
+        <span>React</span> • <span>Next.js</span> • <span>TypeScript</span> • <span>Tailwind CSS</span> • <span>Zustand</span> • <span>TanStack Query</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
